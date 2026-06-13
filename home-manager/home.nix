@@ -35,6 +35,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     oh-my-zsh
+    nodejs_22
+    yarn
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -71,7 +73,12 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
     TERMINAL = "kitty";
+    NPM_CONFIG_PREFIX = "${config.home.homeDirectory}/.npm-global";
   };
+
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.npm-global/bin"
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
