@@ -13,7 +13,6 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 
       modules = [
-        #./configuration.nix
         ./modules/system.nix
         ./hosts/nixos/default.nix
         ./modules/steam.nix

@@ -1,8 +1,7 @@
 {
-  config,
-  pkgs,
   ...
-}: {
+}:
+{
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -16,6 +15,11 @@
   networking.hosts = {
     "127.0.0.1" = [ "prueba.com" ];
   };
-  
+
+  # Open ports in the firewall.
+  networking.firewall.enable = false;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+
 }
