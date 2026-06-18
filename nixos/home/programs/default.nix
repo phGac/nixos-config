@@ -8,10 +8,7 @@
       ./browsers.nix
       ./common.nix
       ./git.nix
-      ./vscode.nix
+      ./editors.nix
       ./minecraft.nix
-
-      
-      ./ventoy.nix
     ];
 }

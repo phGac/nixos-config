@@ -1,0 +1,9 @@
+{
+  ...
+}:
+{
+  imports =
+    [
+      ./ventoy.nix
+    ];
+}

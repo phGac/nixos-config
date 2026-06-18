@@ -13,4 +13,8 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    pkgs.jetbrains.webstorm
+  ];
 }
