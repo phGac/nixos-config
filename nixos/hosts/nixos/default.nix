@@ -8,28 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./boot.nix
+      ./network.nix
+      ./graphics.nix
     ];
-
-  # Bootloader.
-  #boot.loader.efi.canTouchEfiVariables = true;
-  #boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
-  #boot.loader.grub.efiSupport = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
-  #boot.supportedFilesystems = [ "ntfs" ];
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Santiago";
@@ -84,69 +66,45 @@
     #media-session.enable = true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."tato" = {
-    isNormalUser = true;
-    description = "tato";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+  #users.users."tato" = {
+  #  isNormalUser = true;
+  #  description = "tato";
+  #  extraGroups = [ "networkmanager" "wheel" "docker" ];
+  #  packages = with pkgs; [
     #  thunderbird
-    ];
-  };
+  #  ];
+  #};
 
-  programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.12"
-    "ventoy-full"
-  ];
+  programs.gamemode.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    prismlauncher
-    (discord.override {
-     withVencord = true;
-    })
-    mangohud
-    protonup-qt
+    #prismlauncher
+    #(discord.override {
+    # withVencord = true;
+    #})
+    #mangohud
+    #protonup-qt
     # modrinth-app
-    zed-editor
+    #zed-editor
+    #docker-compose
+    #unzip
+    nodejs_22
+    yarn
+    #javaPackages.compiler.temurin-bin.jdk-21
   ];
-
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamemode.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
   services.blueman.enable = true;
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [ vulkan-loader vulkan-tools ];
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -155,6 +113,49 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc
+      zlib
+      fuse3
+      alsa-lib
+      at-spi2-atk
+      cairo
+      cups
+      dbus
+      expat
+      fontconfig
+      freetype
+      gdk-pixbuf
+      glib
+      gtk3
+      libGL
+      libappindicator-gtk3
+      libdrm
+      libnotify
+      libpulseaudio
+      libuuid
+      libusb1
+      xorg.libX11
+      xorg.libXScrnSaver
+      xorg.libXcomposite
+      xorg.libXcursor
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXi
+      xorg.libXrandr
+      xorg.libXrender
+      xorg.libXtst
+      xorg.libxcb
+      xorg.libxshmfence
+      #xorg.libxkbcommon
+      nspr
+      nss
+    ];
+  };
 
   # List services that you want to enable:
 
