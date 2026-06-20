@@ -5,7 +5,7 @@
 }:
 
 let 
-  vars = import ./__env.nix;
+  vars = import ./../../__env.nix;
 in
 {
   programs.git = {

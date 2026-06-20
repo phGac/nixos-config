@@ -13,7 +13,7 @@
   networking.networkmanager.enable = true;
 
   networking.hosts = {
-    "127.0.0.1" = [ "prueba.com" ];
+    "127.0.0.1" = [ "iny-tests.one" ];
   };
 
   # Open ports in the firewall.
