@@ -21,6 +21,13 @@ in
         locations."/" = {
           proxyPass = "http://localhost:8080";
           proxyWebsockets = true;
+
+          # Crucial: Fixes the "upstream sent too big header" error when using Google OAuth with large cookies.
+          extraConfig = ''
+            proxy_buffer_size 128k;
+            proxy_buffers 4 256k;
+            proxy_busy_buffers_size 256k;
+          '';
         };
       };
     };
