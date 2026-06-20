@@ -15,3 +15,5 @@ sudo cp -r "$NIX_DIR/." "$DESTINATION_DIR"
 cd "$DESTINATION_DIR" || exit
 sudo nix flake update
 sudo nixos-rebuild switch --flake "$DESTINATION_DIR#nixos"
+
+sudo cp "$DESTINATION_DIR/flake.lock" "$NIX_DIR/flake.lock"
