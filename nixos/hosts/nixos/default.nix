@@ -85,49 +85,6 @@
   #   enableSSHSupport = true;
   # };
 
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc
-      zlib
-      fuse3
-      alsa-lib
-      at-spi2-atk
-      cairo
-      cups
-      dbus
-      expat
-      fontconfig
-      freetype
-      gdk-pixbuf
-      glib
-      gtk3
-      libGL
-      libappindicator-gtk3
-      libdrm
-      libnotify
-      libpulseaudio
-      libuuid
-      libusb1
-      libx11
-      libxscrnsaver
-      libxcomposite
-      libxcursor
-      libxdamage
-      libxext
-      libxfixes
-      libxi
-      libxrandr
-      libxrender
-      libxtst
-      libxcb
-      libxshmfence
-      #xorg.libxkbcommon
-      nspr
-      nss
-    ];
-  };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
