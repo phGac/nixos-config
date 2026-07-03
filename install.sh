@@ -3,6 +3,7 @@
 CURRENT_DIR=$(pwd)
 NIX_DIR="$CURRENT_DIR/nixos"
 DESTINATION_DIR="/etc/nixos"
+CURRENT_HOSTNAME="nixos"
 
 if [ ! -d "$DESTINATION_DIR" ]; then
     echo "Destination directory does not exist. Creating it..."
@@ -13,7 +14,7 @@ sudo rm -rf "$DESTINATION_DIR/*" || ''
 sudo cp -r "$NIX_DIR/." "$DESTINATION_DIR"
 
 cd "$DESTINATION_DIR" || exit
-sudo nix flake update
-sudo nixos-rebuild switch --flake "$DESTINATION_DIR#nixos"
+#sudo nix flake update
+sudo nixos-rebuild switch --flake "$DESTINATION_DIR#$CURRENT_HOSTNAME"
 
 sudo cp "$DESTINATION_DIR/flake.lock" "$NIX_DIR/flake.lock"

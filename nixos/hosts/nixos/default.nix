@@ -13,6 +13,7 @@
       ./bluetooth.nix
       ./graphics.nix
       ./ssh.nix
+      ./flatpak.nix
     ];
 
   # Set your time zone.
@@ -71,13 +72,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  programs.gamemode.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    nodejs_22
-    yarn
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -112,7 +109,7 @@
       libpulseaudio
       libuuid
       libusb1
-      libX11
+      libx11
       libxscrnsaver
       libxcomposite
       libxcursor
