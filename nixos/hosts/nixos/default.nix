@@ -13,7 +13,6 @@
       ./bluetooth.nix
       ./graphics.nix
       ./ssh.nix
-      ./flatpak.nix
     ];
 
   # Set your time zone.
