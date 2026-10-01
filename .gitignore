@@ -1,3 +1,4 @@
 .git
 
 **/**/__env.nix
+**/**/identity.nix
