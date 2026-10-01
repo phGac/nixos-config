@@ -16,5 +16,9 @@
     solaar
     # Logitech devices configuration tool (mouse buttons)
     logiops
+
+    # Minecraft
+    prismlauncher
+    mangohud
   ];
 }

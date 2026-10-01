@@ -1,37 +1,45 @@
 {
-  description = "Home-Manager configuration for NixOS";
+  description = "Personal NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    #flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, ... }: 
+    let
+      mkSystem = import ./lib/mkSystem.nix { inherit nixpkgs home-manager; };
+      mkHome = import ./lib/mkHome.nix { inherit home-manager; };
+    in {
+      nixosConfigurations = {
+        desktop = mkSystem {
+          hostName = "desktop";
+          system = "x86_64-linux";
+          user = "tato";
+          modules = [
+            ./hosts/desktop/default.nix
+            ./modules/common
+            ./modules/desktop
+            ./modules/dev
+            ./modules/services
+          ];
+        };
+      };
 
-      modules = [
-        ./modules/system.nix
-        ./hosts/nixos/default.nix
-        ./modules/steam.nix
-        ./modules/services/default.nix
-        
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          users.users."tato" = {
-            isNormalUser = true;
-            description = "tato";
-            extraGroups = [ "networkmanager" "wheel" "docker" ];
-          };
-
-          home-manager.users."tato" = import ./home/default.nix;
-        }
-      ];
+      homeConfigurations = {
+        "tato@desktop" = mkHome {
+          username = "tato";
+          homeDirectory = "/home/tato";
+          extraModules = [
+            ./users/tato/profiles/dev.nix
+            ./users/tato/profiles/gaming.nix
+            ./users/tato/profiles/internet.nix
+          ];
+        };
+      }
     };
-  };
 }
