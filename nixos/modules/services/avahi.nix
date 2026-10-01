@@ -1,8 +1,6 @@
+{ config, pkgs, ... }:
+
 {
-  config,
-  pkgs,
-  ...
-}: {
   # 1. Instalar el paquete de Sunshine
   environment.systemPackages = [
     pkgs.sunshine

@@ -1,8 +1,6 @@
+{ config, pkgs, ... }:
+
 {
-  config,
-  pkgs,
-  ...
-}: {
   # programs.vscode = {
   #   enable = true;
   #    profiles = {

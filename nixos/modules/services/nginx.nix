@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: 
+{ config, pkgs, ... }: 
 
 let 
   vars = import ./../../__env.nix;
