@@ -1,9 +1,0 @@
-{
-  ...
-}:
-{
-  imports =
-    [
-      ./ventoy.nix
-    ];
-}

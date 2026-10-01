@@ -1,9 +1,0 @@
-{
-  ...
-}:
-{
-  imports =
-    [
-      ./nodejs.nix
-    ];
-}
