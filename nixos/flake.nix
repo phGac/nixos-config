@@ -21,11 +21,13 @@
           system = "x86_64-linux";
           user = "tato";
           modules = [
-            ./hosts/desktop/default.nix
+            ./hosts/desktop
             ./modules/common
             ./modules/desktop
             ./modules/dev
             ./modules/services
+
+            ./modules/desktop/graphics-nvidia.nix
           ];
         };
       };
@@ -40,6 +42,6 @@
             ./users/tato/profiles/internet.nix
           ];
         };
-      }
+      };
     };
 }
