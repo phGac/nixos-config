@@ -1,7 +1,7 @@
 { config, pkgs, ... }: 
 
 let 
-  vars = import ./../../__env.nix;
+  vars = import ./../../../__env.nix;
 in
 {
   # ###############################################################################################
@@ -54,9 +54,6 @@ in
     bruno # postman alternative
     git-filter-repo # allows to filter git history, e.g. to remove large files
   ];
-
-  # Permite usar el comando supabase (npm)
-  programs.nix-ld.enable = true;
 
   home.sessionVariables = {
     NPM_CONFIG_PREFIX = "${config.home.homeDirectory}/.npm-global";

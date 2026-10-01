@@ -10,36 +10,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: 
+  outputs = inputs@{ nixpkgs, home-manager, ... }: 
     let
-      mkSystem = import ./lib/mkSystem.nix { inherit nixpkgs home-manager; };
-      mkHome = import ./lib/mkHome.nix { inherit home-manager; };
+      lib = import ./lib { 
+        inherit inputs;
+        inherit (nixpkgs) lib;
+      };
     in {
       nixosConfigurations = {
-        desktop = mkSystem {
-          hostName = "desktop";
+        desktop = lib.mkSystem {
+          hostname = "desktop";
           system = "x86_64-linux";
-          user = "tato";
+          users = ["tato"];
           modules = [
-            ./hosts/desktop
             ./modules/common
             ./modules/desktop
             ./modules/dev
             ./modules/services
 
             ./modules/desktop/graphics-nvidia.nix
-          ];
-        };
-      };
-
-      homeConfigurations = {
-        "tato@desktop" = mkHome {
-          username = "tato";
-          homeDirectory = "/home/tato";
-          extraModules = [
-            ./users/tato/profiles/dev.nix
-            ./users/tato/profiles/gaming.nix
-            ./users/tato/profiles/internet.nix
           ];
         };
       };
