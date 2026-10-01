@@ -74,7 +74,28 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    easyeffects
   ];
+
+  # Permite usar el comando supabase (npm)
+  programs.nix-ld.enable = true;
+
+  # Fix Minecraft library libSuperResolution+linux64+release.so
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    glib
+    xorg.libX11
+    xorg.libXext
+    xorg.libXcursor
+    xorg.libXrandr
+    xorg.libXi
+    libGL
+  ] ++ (with pkgs; [
+    # Agrega aquí dependencias extras si la librería requiere CUDA o Vulkan
+    vulkan-loader
+  ]);
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

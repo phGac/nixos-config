@@ -25,4 +25,9 @@ in
       enable = true;
     };
   };
+
+  home.packages = with pkgs; [
+    # allows to filter git history, e.g. to remove large files
+    pkgs.git-filter-repo
+  ];
 }

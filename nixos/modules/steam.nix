@@ -19,7 +19,14 @@
 
   environment.systemPackages = with pkgs; [
     protonup-qt
+
+    # mouse configuration tool
+    solaar
+    # Logitech devices configuration tool (mouse buttons)
+    logiops
   ];
+
+  services.logiops.enable = true;
 
   programs.steam = {
     enable = true;
@@ -31,5 +38,10 @@
 
   # Enable controller support for Steam games.
   hardware.steam-hardware.enable = true;
+
+  environment.sessionVariables = {
+    # Evita que se eliminen los archivos de caché de shaders de OpenGL al cerrar Steam, lo que puede mejorar el rendimiento en algunos juegos.
+    __GL_SHADER_DISK_CACHE_SKIP_CLEANUP = "1";
+  };
 
 }

@@ -18,11 +18,13 @@
       fsType = "ext4";
     };
 
+  /*
   fileSystems."/mnt/games_1tb" =
     { device = "/dev/disk/by-uuid/E8D0407AD04050CC";
       fsType = "ntfs-3g";
       options = [ "uid=1000" "gid=100" "nofail" "umask=000" ];
     };
+  */
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/4a7ade68-b8cf-4c82-bac7-0ef94d5a52c9"; }
@@ -30,4 +32,10 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.logitech.wireless = {
+    enable = true;
+    enableGraphical = true;
+  };
+
 }
