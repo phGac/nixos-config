@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }: 
+{ config, pkgs, ... }: 
 
 let 
   vars = import ./../identity.nix;
@@ -49,7 +49,7 @@ in
   home.packages = with pkgs; [
     nodejs_22
     yarn
-    pkgs-unstable.supabase-cli
+    supabase-cli
  
     jetbrains.webstorm
     bruno # postman alternative
