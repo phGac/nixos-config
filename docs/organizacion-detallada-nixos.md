@@ -225,7 +225,7 @@ nixos/
     common/
       nix.nix
       locale.nix
-      networking.nix
+      network.nix
       audio.nix
       security.nix
       packages.nix

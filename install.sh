@@ -3,7 +3,7 @@
 CURRENT_DIR=$(pwd)
 NIX_DIR="$CURRENT_DIR/nixos"
 DESTINATION_DIR="/etc/nixos"
-CURRENT_HOSTNAME="desktop"
+CURRENT_HOSTNAME="tato-desktop"
 
 if [ ! -d "$DESTINATION_DIR" ]; then
     echo "Destination directory does not exist. Creating it..."

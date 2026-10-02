@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, pkgs-unstable, ... }: 
 
 let 
   vars = import ./../identity.nix;
@@ -49,7 +49,8 @@ in
   home.packages = with pkgs; [
     nodejs_22
     yarn
-
+    pkgs-unstable.supabase-cli
+ 
     jetbrains.webstorm
     bruno # postman alternative
     git-filter-repo # allows to filter git history, e.g. to remove large files

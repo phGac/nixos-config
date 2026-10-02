@@ -14,6 +14,7 @@
 
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
+      inherit (inputs.nixpkgs-unstable) pkgs-unstable;
 
       modules = [
         ../hosts/${hostname}

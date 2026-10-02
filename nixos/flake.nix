@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     #flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -10,7 +11,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: 
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, ... }: 
     let
       lib = import ./lib { 
         inherit inputs;
@@ -18,8 +19,8 @@
       };
     in {
       nixosConfigurations = {
-        desktop = lib.mkSystem {
-          hostname = "desktop";
+        "tato-desktop" = lib.mkSystem {
+          hostname = "tato-desktop";
           system = "x86_64-linux";
           users = ["tato"];
           modules = [
