@@ -22,7 +22,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Permite usar el comando supabase (npm)
+  # Permite usar paquetes globales de Nix en el sistema como nodejs, yarn, etc.
   programs.nix-ld.enable = true;
 
   # This value determines the NixOS release from which the default

@@ -1,7 +1,10 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, pkgs-unstable, ... }: 
 
 let 
   vars = import ./../identity.nix;
+  supabase-cli-latest = import ../../../packages/supabase-cli.nix {
+    inherit pkgs;
+  };
 in
 {
   # ###############################################################################################
@@ -49,18 +52,19 @@ in
   home.packages = with pkgs; [
     nodejs_22
     yarn
-    supabase-cli
+    supabase-cli-latest
+    #pkgs-unstable.supabase-cli
  
     jetbrains.webstorm
     bruno # postman alternative
     git-filter-repo # allows to filter git history, e.g. to remove large files
   ];
 
-  home.sessionVariables = {
-    NPM_CONFIG_PREFIX = "${config.home.homeDirectory}/.npm-global";
-  };
+  #home.sessionVariables = {
+  #  NPM_CONFIG_PREFIX = "${config.home.homeDirectory}/.npm-global";
+  #};
 
-  home.sessionPath = [
-    "${config.home.homeDirectory}/.npm-global/bin"
-  ];
+  #home.sessionPath = [
+  #  "${config.home.homeDirectory}/.npm-global/bin"
+  #];
 }
