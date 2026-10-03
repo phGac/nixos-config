@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   home.packages = with pkgs; [
@@ -11,7 +11,7 @@
     logiops
 
     # Minecraft
-    prismlauncher
+    pkgs-unstable.prismlauncher
     mangohud
   ];
 }

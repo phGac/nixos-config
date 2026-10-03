@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   programs.firefox.enable = true;
@@ -8,5 +8,7 @@
     (discord.override {
      withVencord = true;
     })
+
+    pkgs-unstable.concord-tui
   ];
 }
