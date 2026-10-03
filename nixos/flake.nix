@@ -11,27 +11,23 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, ... }: 
-    let
-      lib = import ./lib { 
-        inherit inputs;
-        inherit (nixpkgs) lib;
-      };
-    in {
-      nixosConfigurations = {
-        "tato-desktop" = lib.mkSystem {
-          hostname = "tato-desktop";
-          system = "x86_64-linux";
-          users = ["tato"];
-          modules = [
-            ./modules/common
-            ./modules/desktop
-            ./modules/dev
-            ./modules/services
-
-            ./modules/desktop/graphics-nvidia.nix
-          ];
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: 
+  {
+    nixosConfigurations = {
+      "tato-desktop" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/tato-desktop
+          home-manager.nixosModules.home-manager
+        ];
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
       };
     };
+  };
 }

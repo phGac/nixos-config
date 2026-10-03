@@ -1,11 +1,21 @@
 { config, pkgs, ... }:
 
 {
+  networking.hostName = "tato-desktop";
+  system.stateVersion = "26.05";
+
   imports =
     [
       ./hardware-configuration.nix
       ./boot.nix
       ./network.nix
+      ./users.nix
+
+      ../../modules/common
+      ../../modules/desktop
+      ../../modules/dev
+      ../../modules/services
+      ../../modules/desktop/graphics-nvidia.nix
     ];
 
   # Enable the XFCE Desktop Environment.
