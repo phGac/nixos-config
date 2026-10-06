@@ -10,12 +10,7 @@
       ./boot.nix
       ./network.nix
       ./users.nix
-
-      ../../modules/common
-      ../../modules/desktop
-      ../../modules/dev
-      ../../modules/services
-      ../../modules/desktop/graphics-nvidia.nix
+      ./modules.nix
     ];
 
   # Enable the XFCE Desktop Environment.
@@ -34,6 +29,9 @@
 
   # Permite usar paquetes globales de Nix en el sistema como nodejs, yarn, etc.
   programs.nix-ld.enable = true;
+
+  # Enable zsh completion to get completion for system packages (e.g. systemd)
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

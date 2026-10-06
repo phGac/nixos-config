@@ -13,5 +13,9 @@
     # Minecraft
     pkgs-unstable.prismlauncher
     mangohud
+
+    # Minecraft modpack management tools
+    packwiz
+    tmux
   ];
 }
