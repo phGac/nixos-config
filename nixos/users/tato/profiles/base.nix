@@ -33,14 +33,14 @@
     };
 
     initContent = ''
-      mc-log() {
-        tail -F "/var/lib/minecraft-servers/$1/logs/latest.log"
-      }
-
-      _mc-log() {
+      _mc-cmd() {
         local -a servers
         servers=(/var/lib/minecraft-servers/*(/N:t))
         compadd -- $servers
+      }
+
+      mc-log() {
+        tail -F "/var/lib/minecraft-servers/$1/logs/latest.log"
       }
 
       mc-console() {
@@ -49,8 +49,28 @@
             attach
       }
 
-      compdef _mc-log mc-log
-      compdef _mc-log mc-console
+      mc-start() {
+        sudo systemctl start "minecraft-server-$1"
+      }
+
+      mc-stop() {
+        sudo systemctl stop "minecraft-server-$1"
+      }
+
+      mc-restart() {
+        sudo systemctl restart "minecraft-server-$1"
+      }
+
+      mc-status() {
+        sudo systemctl status "minecraft-server-$1"
+      }
+
+      compdef _mc-cmd mc-console
+      compdef _mc-cmd mc-log
+      compdef _mc-cmd mc-start
+      compdef _mc-cmd mc-stop
+      compdef _mc-cmd mc-restart
+      compdef _mc-cmd mc-status
     '';
 
     history.size = 10000;

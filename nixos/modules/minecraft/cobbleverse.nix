@@ -12,8 +12,7 @@ let
   };
   mcVersion = modpack.manifest.dependencies.minecraft;
   fabricVersion = modpack.manifest.dependencies.fabric-loader;
-  # serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
-  serverVersion = "fabric-${lib.replaceStrings [ "." ] [ "_" ] mcVersion}";
+  serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
 in
 {
   services.minecraft-servers.servers.cobbleverse = {
