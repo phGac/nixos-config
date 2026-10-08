@@ -38,6 +38,27 @@
           }
         ];
       };
+
+      "home-server" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+
+        modules = [
+          ./hosts/home-server
+          home-manager.nixosModules.home-manager
+
+          nix-minecraft.nixosModules.minecraft-servers
+          {
+            nixpkgs.overlays = [ nix-minecraft.overlay ];
+          }
+        ];
+      };
     };
   };
 }
