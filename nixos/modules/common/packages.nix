@@ -2,12 +2,13 @@
 
 {
   environment.systemPackages = with pkgs; [
-    vim
+    # vim
     neovim
     wget
     curl
     unzip
-    # git
+    zip
+    git
     htop
     # btop # es un monitor de recursos para la terminal que muestra el uso de la CPU, la memoria, los discos, la red y los procesos en tiempo real con una interfaz gráfica moderna. Permite usar el mouse.
     # fd # comando (fd) para buscar archivos y directorios de forma rápida y sencilla

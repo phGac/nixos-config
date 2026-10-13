@@ -49,7 +49,7 @@ in
     };
 
     openFirewall = true;
-    jvmOpts = "-Xms16G -Xmx16G -XX:+UseCompactObjectHeaders -Dchunky.maxWorkingCount=768 -XX:+UseG1GC -XX:G1HeapRegionSize=16M";
+    jvmOpts = "-Xms10G -Xmx10G -XX:+UseCompactObjectHeaders -Dchunky.maxWorkingCount=768 -XX:+UseG1GC -XX:G1HeapRegionSize=16M";
 
     symlinks = mods // {
       "mods/ScalableLux-0.1.0.1+neoforge.1cb1e91-all.jar" = pkgs.fetchurl {
@@ -118,7 +118,6 @@ in
       
       "config/c2me.toml" = "${configDir}/c2me.toml";
     };
-    #files = { "config" = "${modpack}/config"; };
 
     files =
       lib.filterAttrs
@@ -126,7 +125,7 @@ in
         (collectFilesAt modpack "config");
 
     serverProperties = {
-      server-port = 50500;
+      server-port = 25565;
       motd = "Vampirism Co 2026";
       max-players = 8;
   
