@@ -29,7 +29,7 @@
         };
 
         modules = [
-          ./hosts/tato-desktop
+          ./hosts/tato-desktop/configuration.nix
           home-manager.nixosModules.home-manager
 
           nix-minecraft.nixosModules.minecraft-servers

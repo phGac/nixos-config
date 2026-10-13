@@ -33,6 +33,9 @@
   # Enable zsh completion to get completion for system packages (e.g. systemd)
   environment.pathsToLink = [ "/share/zsh" ];
 
+  # Permite enviar archivos a través de la red local.
+  programs.localsend.enable = true;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

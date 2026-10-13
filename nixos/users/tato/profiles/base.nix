@@ -28,10 +28,11 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      ll = "ls -l";
+      # ll = "ls -l";
       update = "sudo nixos-rebuild switch";
     };
 
+    /*
     initContent = ''
       _mc-cmd() {
         local -a servers
@@ -72,8 +73,9 @@
       compdef _mc-cmd mc-restart
       compdef _mc-cmd mc-status
     '';
+    */
 
-    history.size = 10000;
+    # history.size = 10000;
 
     oh-my-zsh = {
       enable = true;

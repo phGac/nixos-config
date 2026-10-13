@@ -11,5 +11,7 @@
       ./profiles/dev.nix
       ./profiles/gaming.nix
       ./profiles/internet.nix
+      
+      ./modules/zsh-mc.nix
     ];
 }

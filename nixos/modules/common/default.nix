@@ -10,5 +10,6 @@
       ./network.nix
       ./packages.nix
       ./security.nix
+      ./zsh.nix
     ];
 }

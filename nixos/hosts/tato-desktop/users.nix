@@ -4,6 +4,7 @@
   users.users.tato = {
     isNormalUser = true;
     description = "Tato";
+    shell = pkgs.zsh;
     extraGroups = [
       "wheel"
       "networkmanager"
