@@ -49,7 +49,7 @@ in
     };
 
     openFirewall = true;
-    jvmOpts = "-Xms10G -Xmx10G -XX:+UseCompactObjectHeaders -Dchunky.maxWorkingCount=768 -XX:+UseG1GC -XX:G1HeapRegionSize=16M";
+    jvmOpts = "-Xms16G -Xmx16G -XX:+UseCompactObjectHeaders -Dchunky.maxWorkingCount=768 -XX:+UseG1GC -XX:G1HeapRegionSize=16M";
 
     symlinks = mods // {
       "mods/ScalableLux-0.1.0.1+neoforge.1cb1e91-all.jar" = pkgs.fetchurl {

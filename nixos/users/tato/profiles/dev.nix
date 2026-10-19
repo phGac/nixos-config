@@ -54,6 +54,8 @@ in
     yarn
     supabase-cli-latest
     #pkgs-unstable.supabase-cli
+
+    python3
  
     jetbrains.webstorm
     bruno # postman alternative

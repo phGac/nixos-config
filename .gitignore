@@ -2,3 +2,5 @@
 /host
 **/**/__env.nix
 **/**/identity.nix
+
+nixos/packs/

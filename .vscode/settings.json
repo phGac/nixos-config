@@ -1,5 +1,19 @@
 {
   "editor.indentSize": 2,
   "editor.tabSize": 2,
-  "editor.insertSpaces": true
+  "editor.insertSpaces": true,
+  "nix.enableLanguageServer": true,
+  "nix.serverPath": "nixd",
+  "nix.serverSettings": {
+    "formatting": {
+      "command": ["nixfmt"]
+    },
+    "options": {
+      // If this is ommited, default search path (<nixpkgs>) will be used.
+      "nixos": { // This name "nixos" could be arbitary.
+        // The expression to eval, intepret it as option declarations.
+        "expr": "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.tato-desktop.options"
+      }
+    }
+  }
 }

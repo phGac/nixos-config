@@ -89,5 +89,9 @@
   home.packages = with pkgs; [
     kitty
     zsh
+
+    # Autocompletado y formateo de nix
+    nixd
+    nixfmt
   ];
 }

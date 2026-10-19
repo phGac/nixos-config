@@ -13,6 +13,7 @@
     # ../../modules/minecraft/ziptastic.nix
     # ../../modules/minecraft/keooptimized-1_21_1.nix
     # ../../modules/minecraft/cobbleverse.nix
-    ../../modules/minecraft/vampirism_co.nix
+    # ../../modules/minecraft/vampirism_co.nix
+    ../../modules/minecraft/keooptimized-1_21_1-curseforge.nix
   ];
 }
