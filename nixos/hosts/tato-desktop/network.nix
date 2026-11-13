@@ -17,7 +17,10 @@
       47984 47989 47990 48010
 
       # puertos usados por supabase
-      54323 54324 54321
+      54323 54324 54321 54322
+
+      # puerto usado por project-memory MCP
+      8888
     ];
     allowedUDPPorts = [
       50500 # Minecraft server port
