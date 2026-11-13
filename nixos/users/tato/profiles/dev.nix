@@ -2,9 +2,9 @@
 
 let 
   vars = import ./../identity.nix;
-  supabase-cli-latest = import ../../../packages/supabase-cli.nix {
-    inherit pkgs;
-  };
+  #supabase-cli-latest = import ../../../packages/supabase-cli.nix {
+  #  inherit pkgs;
+  #};
 in
 {
   # ###############################################################################################
@@ -13,6 +13,9 @@ in
 
   programs.vscode = {
     enable = true;
+
+    package = pkgs-unstable.vscode;
+
     profiles = {
       default = {
         extensions = with pkgs.vscode-extensions; [
@@ -50,9 +53,10 @@ in
   # ###############################################################################################
 
   home.packages = with pkgs; [
-    nodejs_22
-    yarn
-    supabase-cli-latest
+    jmeter
+    #nodejs_22
+    #yarn
+    #supabase-cli-latest
     #pkgs-unstable.supabase-cli
 
     python3
@@ -62,11 +66,11 @@ in
     git-filter-repo # allows to filter git history, e.g. to remove large files
   ];
 
-  #home.sessionVariables = {
-  #  NPM_CONFIG_PREFIX = "${config.home.homeDirectory}/.npm-global";
-  #};
+  home.sessionVariables = {
+    NPM_CONFIG_PREFIX = "${config.home.homeDirectory}/.npm-global";
+  };
 
-  #home.sessionPath = [
-  #  "${config.home.homeDirectory}/.npm-global/bin"
-  #];
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.npm-global/bin"
+  ];
 }

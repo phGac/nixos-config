@@ -14,6 +14,11 @@ in
         forceSSL = true;
         enableACME = true;
 
+        extraConfig = ''
+          client_header_buffer_size 4k;
+          large_client_header_buffers 4 16k;
+        '';
+
         locations."/" = {
           proxyPass = "http://localhost:8080";
           proxyWebsockets = true;

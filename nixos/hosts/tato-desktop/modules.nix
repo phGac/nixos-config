@@ -15,5 +15,9 @@
     # ../../modules/minecraft/cobbleverse.nix
     # ../../modules/minecraft/vampirism_co.nix
     ../../modules/minecraft/keooptimized-1_21_1-curseforge.nix
+
+    ../../modules/dev/node.nix
+    ../../modules/services/ollama.nix
+    ../../modules/dev/sqlite3.nix
   ];
 }

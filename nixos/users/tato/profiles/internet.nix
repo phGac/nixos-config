@@ -7,6 +7,7 @@
     easyeffects # Allows to apply effects to audio input/output, like equalizer, compressor, etc.
     (discord.override {
      withVencord = true;
+     vencord = pkgs-unstable.vencord;
     })
 
     pkgs-unstable.concord-tui

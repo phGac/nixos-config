@@ -2,11 +2,11 @@
 
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "supabase-cli";
-  version = "2.119.0";
+  version = "3.1.0";
 
   src = pkgs.fetchurl {
     url = "https://registry.npmjs.org/@supabase/cli-linux-x64/-/cli-linux-x64-${version}.tgz";
-    hash = "sha256-FAitwGRJh69DyPTiYNx4DJ5zYltgwgDtWVehPde71EQ=";
+    hash = "sha256-s6sjnvto5dhBXXHK/AMpnamGD7s+0Qoj/4KbJTmlOlk=";
   };
 
   sourceRoot = ".";
