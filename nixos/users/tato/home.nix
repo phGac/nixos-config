@@ -13,5 +13,6 @@
       ./profiles/internet.nix
       
       ./modules/zsh-mc.nix
+      ./modules/zsh-supabase.nix
     ];
 }

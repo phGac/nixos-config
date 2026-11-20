@@ -12,6 +12,7 @@
       443 
       50500 # Minecraft server port
       3389
+      8080 # HTTP alternative port
 
       # puertos requeridos por Sunshine/Moonlight
       47984 47989 47990 48010

@@ -13,6 +13,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     playit-nixos-module.url = "github:pedorich-n/playit-nixos-module";
+    
+    nixpkgs-ollama.url = "github:NixOS/nixpkgs/ac588ef1c914865dad517b337ea0eb9694a4021c";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
